@@ -1,0 +1,21 @@
+$MenuHeight: 80px;
+
+
+.MenuContainer {
+  display: flex;
+  align-items: center;
+  margin: 20px 30px;
+  //justify-content: space-between;
+  //height: $MenuHeight;
+
+  span.logo {
+    //margin-left: 30px;
+    font-size: 1.2rem;
+    //width: 10%;
+  }
+
+  //input {
+  //
+  //}
+
+}

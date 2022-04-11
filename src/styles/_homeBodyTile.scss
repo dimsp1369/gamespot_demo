@@ -1,0 +1,80 @@
+$Transition: 0.3s;
+
+.GamesTile-Container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  gap: 20px;
+  flex-flow: wrap;
+
+  .GameTile {
+    flex-grow: 1;
+    width: 250px;
+    height: 250px;
+    border-radius: 20px;
+    background: darkgrey;
+    transition: $Transition;
+
+
+    img {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      width: inherit;
+      height: 150px;
+    }
+
+    .game-shortDescription {
+      margin: 5px 10px 5px 10px;
+
+      h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+      }
+
+      span {
+        display: block;
+      }
+    }
+  }
+
+}
+
+
+@media only screen and (max-width: 900px) {
+  .GamesTile-Container {
+    display: grid;
+    //grid-template-columns: 100%;
+    //justify-content: center;
+    //align-items: center;
+    //justify-content: space-between;
+    //gap: 20px;
+    //flex-flow: wrap;
+    //position: relative;
+
+    .GameTile {
+
+      width: 500px;
+      height: 450px;
+
+      img {
+        height: 300px;
+      }
+    }
+
+  }
+
+
+}
+
+
+////.GameTile:hover {
+////  transition: $Transition;
+////  width: 520px;
+////  height: 520px;
+////
+////  img {
+////    border-top-left-radius: 20px;
+////    border-top-right-radius: 20px;
+////    width: inherit;
+////    height: 300px;
+////  }
+////}

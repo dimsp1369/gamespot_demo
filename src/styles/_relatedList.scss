@@ -1,0 +1,31 @@
+$RelatedListWight: 150px;
+
+
+.RelatedList-Container {
+  display: flex;
+  flex-direction: column;
+  min-width: $RelatedListWight;
+  padding-top: 20px;
+
+  .link {
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+  }
+
+  .text-Link {
+    transition: 0.3s;
+  }
+
+  .text-Link:hover {
+    transition: 0.3s;
+    color: darkgrey;
+  }
+
+}
+
+
+@media only screen and (max-width: 900px) {
+  .RelatedList-Container {
+    display: none;
+  }
+}
