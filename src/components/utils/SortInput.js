@@ -1,20 +1,27 @@
-import React, {useEffect, useState} from 'react';
-import {useDispatch} from "react-redux";
-import {getOrderedGames} from "../../store/actions/asyncActions";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getGames} from "../../store/actions/asyncActions";
+import {setSortQuery} from "../../store/reducers/queryReducer";
 
 const SortInput = () => {
-    const [orderQuery, setOrderQuery] = useState('')
     const dispatch = useDispatch()
 
+    const sortQuery = useSelector(state => state.queryReducer.sortQuery)
+    const filterQuery = useSelector(state => state.queryReducer.filterQuery)
+
+    const setSortQueryHandler = (e) => {
+        dispatch(setSortQuery(e.target.value))
+    }
+
     useEffect(() => {
-        if (orderQuery) dispatch(getOrderedGames(orderQuery))
-    }, [orderQuery])
+        if (sortQuery) dispatch(getGames(sortQuery, filterQuery))
+    }, [sortQuery])
 
 
     return (
-        <label>
+        <label className='SortInput'>
             Order by:
-            <select onChange={(e) => setOrderQuery(e.target.value)} placeholder='order'>
+            <select onChange={setSortQueryHandler} placeholder='order'>
                 <option value="-released">Release date (new)</option>
                 <option value="released">Release date (old)</option>
                 <option value="-rating">Popularity (high)</option>

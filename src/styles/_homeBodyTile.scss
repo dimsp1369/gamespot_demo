@@ -1,11 +1,48 @@
 $Transition: 0.3s;
 
+.Filters-Container {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+
+  .FilterInput {
+    padding: 10px 15px;
+    border-radius: 10px;
+  }
+
+  .SortInput {
+    padding: 10px 15px;
+    border-radius: 10px;
+    background: #5c677d;
+
+    select {
+      color: #fff;
+      background: none;
+      border: none;
+      font-size: inherit;
+      font-weight: 700;
+    }
+  }
+
+  .SortInput:hover {
+    transition: $Transition;
+    color: #7d8597;
+
+    select {
+      transition: $Transition;
+      color: #7d8597;
+    }
+  }
+}
+
+
 .GamesTile-Container {
   display: flex;
   justify-content: center;
   margin-top: 30px;
   gap: 20px;
   flex-flow: wrap;
+  //width: 100%;
 
   .GameTile {
     flex-grow: 1;

@@ -1,14 +1,17 @@
 import axios from 'axios'
 import {setGames, setNextStack, setSearchedGames} from "../reducers/gamesReducer";
+import {setPlatforms} from "../reducers/platformReducer";
 
 
 const key = '0cdb7d176a9b4fc78fd2ae89d43d6aee'
 const baseUrl = 'https://api.rawg.io/api/'
 
-export const getGames = () => {
+export const getGames = (orderQuery, platformQuery) => {
+    const ordering = orderQuery && `ordering=${orderQuery}`
+    const platform = platformQuery && `parent_platforms=${platformQuery}`
     return async (dispatch) => {
         try {
-            const response = await axios.get(`${baseUrl}games?key=${key}&page_size=50`)
+            const response = await axios.get(`${baseUrl}games?key=${key}&page_size=50&${ordering}&${platform}`)
             dispatch(setGames(response.data))
         } catch (e) {
             console.log(e)
@@ -38,11 +41,11 @@ export const getSearchedGames = (searchQuery) => {
     }
 }
 
-export const getOrderedGames = (orderQuery) => {
+export const getPlatform = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get(`${baseUrl}games?key=${key}&page_size=50&ordering=${orderQuery}`)
-            dispatch(setGames(response.data))
+            const response = await axios.get(`${baseUrl}platforms/lists/parents?key=${key}`)
+            dispatch(setPlatforms(response.data))
         } catch (e) {
             console.log(e)
         }

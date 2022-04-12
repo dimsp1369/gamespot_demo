@@ -9,6 +9,16 @@
 @import "_styleComponents.scss";
 
 
+$blue1: #0466c8;
+$blue2: #0353a4;
+$blue3: #023e7d;
+$blue4: #002855;
+$blue5: #001233;
+$blue6: #33415c;
+$blue7: #5c677d;
+$blue8: #7d8597;
+$blue9: #979dac;
+
 
 
 * {
@@ -34,7 +44,7 @@ a {
 
 .MainLayout-bodyContainer {
   display: flex;
-  justify-content: center;
+  //justify-content: center;
   margin: 0 40px
 }
 
