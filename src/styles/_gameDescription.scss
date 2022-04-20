@@ -1,0 +1,59 @@
+.Game-Container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .GameDescription-Wrapper {
+    display: flex;
+
+    .GameDescription-Column_1 {
+      max-width: 500px;
+    }
+
+    .GameDescription-Column_2 {
+      max-width: 500px;
+      margin-left: 50px;
+
+      .GameScreenShots {
+        display: flex;
+        gap: 10px;
+        flex-flow: wrap;
+        padding: 0 50px;
+        justify-content: center;
+
+        .ScreenShot-Tile:first-child {
+          width: 310px;
+          height: 200px;
+        }
+
+        .ScreenShot-Tile {
+          border-radius: 5%;
+          width: 150px;
+          height: 100px;
+        }
+
+        .ScreenShot-Tile_Blank {
+          border-radius: 5%;
+          opacity: 0.3;
+          width: 150px;
+          height: 100px;
+          background: #001233;
+          text-align: center;
+          padding: 50px 0;
+        }
+
+        .ScreenShot-Tile_Blank:hover {
+          background: #4466b2;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .Game-Container {
+    flex-flow: wrap;
+  }
+
+
+}
