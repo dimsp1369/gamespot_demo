@@ -7,6 +7,8 @@ import {setCurrentGame} from "../store/reducers/currentGameReducer";
 import SortInput from "./utils/SortInput";
 import useInfinityScroll from "../hooks/useInfinityScroll";
 import FilterInput from "./utils/FilterInput";
+import {resetGames} from "../store/reducers/gamesReducer";
+import {resetQuery} from "../store/reducers/queryReducer";
 
 const HomeBodyTile = () => {
     const dispatch = useDispatch()
@@ -19,7 +21,11 @@ const HomeBodyTile = () => {
     useEffect(() => {
         dispatch(getGames())
         dispatch(getPlatform())
-    }, [])
+        return () => {
+            dispatch(resetGames())
+            dispatch(resetQuery())
+        }
+    }, [dispatch])
 
     return (
         <div>

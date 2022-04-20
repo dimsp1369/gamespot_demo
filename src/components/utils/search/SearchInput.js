@@ -4,7 +4,7 @@ import {getSearchedGames} from "../../../store/actions/asyncActions";
 import SearchItem from "./SearchItem";
 import {setCurrentGame} from "../../../store/reducers/currentGameReducer";
 import {Link} from "react-router-dom";
-import {reset} from "../../../store/reducers/gamesReducer";
+import {resetSearch} from "../../../store/reducers/gamesReducer";
 import {setSearchQuery} from "../../../store/reducers/queryReducer";
 
 const SearchInput = () => {
@@ -23,13 +23,13 @@ const SearchInput = () => {
         const query = e.target.value
         dispatch(setSearchQuery(query))
         if (!query) {
-            dispatch(reset())
+            dispatch(resetSearch())
         }
     }
 
     const chooseGame = (searchedGame) => {
         dispatch(setCurrentGame(searchedGame))
-        dispatch(reset())
+        dispatch(resetSearch())
         dispatch(setSearchQuery(''))
     }
     return (

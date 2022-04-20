@@ -1,7 +1,8 @@
 const SET_GAMES = 'SET_GAMES'
 const SET_NEXT_GAME_STACK = 'SET_NEXT_GAME_STACK'
 const SET_SEARCHED_GAMES = 'SET_SEARCHED_GAMES'
-const RESET = 'RESET'
+const RESET_SEARCH = 'RESET_SEARCH'
+const RESET_GAMES = 'RESET_GAMES'
 
 
 const defaultState = {
@@ -37,10 +38,15 @@ export default function gamesReducer(state = defaultState, action) {
                 searchedGames: action.payload.results,
             }
 
-        case RESET:
+        case RESET_SEARCH:
             return {
                 ...state,
                 searchedGames: [],
+            }
+        case RESET_GAMES:
+            return {
+                ...state,
+                games: [],
             }
         default:
             return state
@@ -51,4 +57,5 @@ export default function gamesReducer(state = defaultState, action) {
 export const setGames = (games) => ({type: SET_GAMES, payload: games})
 export const setNextStack = (games) => ({type: SET_NEXT_GAME_STACK, payload: games})
 export const setSearchedGames = (games) => ({type: SET_SEARCHED_GAMES, payload: games})
-export const reset = () => ({type: RESET})
+export const resetGames = () => ({type: RESET_GAMES})
+export const resetSearch = () => ({type: RESET_SEARCH})

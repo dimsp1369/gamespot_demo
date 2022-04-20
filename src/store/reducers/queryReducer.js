@@ -1,6 +1,7 @@
 const SET_SORT_QUERY = 'SET_SORT_QUERY'
 const SET_FILTER_QUERY = 'SET_FILTER_QUERY'
 const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY'
+const RESET_QUERY = 'RESET_QUERY'
 
 const defaultState = {
     sortQuery: '',
@@ -25,6 +26,14 @@ export default function queryReducer(state = defaultState, action) {
                 ...state,
                 searchQuery: action.payload
             }
+        case RESET_QUERY:
+            return {
+                ...state,
+                sortQuery: '',
+                filterQuery: '',
+                searchQuery: ''
+            }
+
         default:
             return state
     }
@@ -34,3 +43,4 @@ export default function queryReducer(state = defaultState, action) {
 export const setSortQuery = (query) => ({type: SET_SORT_QUERY, payload: query})
 export const setFilterQuery = (query) => ({type: SET_FILTER_QUERY, payload: query})
 export const setSearchQuery = (query) => ({type: SET_SEARCH_QUERY, payload: query})
+export const resetQuery = () => ({type: RESET_QUERY})
