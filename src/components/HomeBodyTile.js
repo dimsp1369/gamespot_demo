@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react';
 import GameTile from "./GameTile";
 import {useDispatch, useSelector} from "react-redux";
-import {getGames, getNextStackGames, getPlatform} from "../store/actions/asyncActions";
+import {getCurrentGame, getGames, getNextStackGames, getPlatform} from "../store/actions/asyncActions";
 import {Link} from "react-router-dom";
-import {setCurrentGame} from "../store/reducers/currentGameReducer";
 import SortInput from "./utils/SortInput";
 import useInfinityScroll from "../hooks/useInfinityScroll";
 import FilterInput from "./utils/FilterInput";
 import {resetGames} from "../store/reducers/gamesReducer";
 import {resetQuery} from "../store/reducers/queryReducer";
+import {resetGame} from "../store/reducers/currentGameReducer";
 
 const HomeBodyTile = () => {
     const dispatch = useDispatch()
@@ -21,11 +21,18 @@ const HomeBodyTile = () => {
     useEffect(() => {
         dispatch(getGames())
         dispatch(getPlatform())
+        dispatch(resetGame())
         return () => {
             dispatch(resetGames())
             dispatch(resetQuery())
         }
-    }, [dispatch])
+    }, [])
+
+    const getGameDetails = (id) => {
+        dispatch(getCurrentGame(id))
+    }
+
+    if (!games.length) return <h2>Loading....</h2>
 
     return (
         <div>
@@ -37,7 +44,7 @@ const HomeBodyTile = () => {
             </div>
             <div className='GamesTile-Container'>
                 {games.map((game, index) => <nav key={game.id} ref={lastElementRef}
-                                                 onClick={() => dispatch(setCurrentGame(game))}>
+                                                 onClick={() => getGameDetails(game.id)}>
                         <Link to={`/games/${game.slug}`}>
                             <GameTile game={game}/>
                         </Link>

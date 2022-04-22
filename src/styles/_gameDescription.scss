@@ -8,6 +8,35 @@
 
     .GameDescription-Column_1 {
       max-width: 500px;
+
+      .GameRating {
+        display: flex;
+        margin-top: 20px;
+
+        div {
+          height: 50px;
+        }
+
+        div:nth-child(1) {
+          background: green;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        div:nth-child(2) {
+          background: blue;
+        }
+
+        div:nth-child(3) {
+          background: orange;
+        }
+
+        div:nth-child(4) {
+          background: red;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+      }
     }
 
     .GameDescription-Column_2 {
@@ -21,6 +50,7 @@
         padding: 0 50px;
         justify-content: center;
 
+
         .ScreenShot-Tile:first-child {
           width: 310px;
           height: 200px;
@@ -30,6 +60,7 @@
           border-radius: 5%;
           width: 150px;
           height: 100px;
+          cursor: pointer;
         }
 
         .ScreenShot-Tile_Blank {
@@ -44,8 +75,11 @@
 
         .ScreenShot-Tile_Blank:hover {
           background: #4466b2;
+          cursor: pointer;
         }
       }
+
+
     }
   }
 }

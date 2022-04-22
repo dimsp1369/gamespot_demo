@@ -5,6 +5,7 @@
 @import "_relatedList.scss";
 @import "_homeBodyTile.scss";
 @import "_gameDescription.scss";
+@import "_gameMetaBlock.scss";
 
 //Utility stile components
 @import "_styleComponents.scss";
@@ -19,7 +20,6 @@ $blue6: #33415c;
 $blue7: #5c677d;
 $blue8: #7d8597;
 $blue9: #979dac;
-
 
 
 * {
@@ -40,6 +40,10 @@ body, html {
 a {
   text-decoration: none;
   color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 10px;
 }
 
 

@@ -1,0 +1,38 @@
+.GameMetaBlock-Wrapper {
+  display: flex;
+  flex-flow: wrap;
+  margin-top: 20px;
+
+  h4 {
+    color: #7d8597;
+    text-transform: capitalize;
+  }
+
+  .GameMetaBlock {
+    width: 50%;
+    padding-left: 5px;
+    margin-bottom: 10px;
+
+    span::after {
+      content: ',';
+    }
+
+    span {
+      margin-right: 5px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    span:hover {
+      color: #829dd9;
+    }
+  }
+
+  .GameMetaBlock:nth-child(n+6) {
+    width: 100%;
+  }
+
+  //.GameMetaBlock-row {
+  //
+  //}
+}

@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getSearchedGames} from "../../../store/actions/asyncActions";
+import {getCurrentGame, getSearchedGames} from "../../../store/actions/asyncActions";
 import SearchItem from "./SearchItem";
-import {setCurrentGame} from "../../../store/reducers/currentGameReducer";
+import {resetGame} from "../../../store/reducers/currentGameReducer";
 import {Link} from "react-router-dom";
-import {resetSearch} from "../../../store/reducers/gamesReducer";
-import {setSearchQuery} from "../../../store/reducers/queryReducer";
+import {resetGames} from "../../../store/reducers/gamesReducer";
+import {resetQuery, setSearchQuery} from "../../../store/reducers/queryReducer";
 
 const SearchInput = () => {
     const dispatch = useDispatch()
@@ -23,14 +23,15 @@ const SearchInput = () => {
         const query = e.target.value
         dispatch(setSearchQuery(query))
         if (!query) {
-            dispatch(resetSearch())
+            dispatch(resetGames())
         }
     }
 
-    const chooseGame = (searchedGame) => {
-        dispatch(setCurrentGame(searchedGame))
-        dispatch(resetSearch())
-        dispatch(setSearchQuery(''))
+    const chooseGame = (id) => {
+        dispatch(getCurrentGame(id))
+        dispatch(resetGames())
+        dispatch(resetGame())
+        dispatch(resetQuery())
     }
     return (
         <div className='searchInput-Container'>
@@ -38,7 +39,7 @@ const SearchInput = () => {
                    value={searchQuery}/>
             <div className='searchResults-Container'>
                 {searchedGames.map(searchedGame => <nav key={searchedGame.id}
-                                                        onClick={() => chooseGame(searchedGame)}>
+                                                        onClick={() => chooseGame(searchedGame.id)}>
                         <Link to={`/games/${searchedGame.slug}`}>
                             <SearchItem searchedGame={searchedGame}/>
                         </Link>

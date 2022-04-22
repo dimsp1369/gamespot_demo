@@ -1,6 +1,7 @@
 import axios from 'axios'
 import {setGames, setNextStack, setSearchedGames} from "../reducers/gamesReducer";
 import {setPlatforms} from "../reducers/platformReducer";
+import {setCurrentGame, setScreenShots} from "../reducers/currentGameReducer";
 
 
 const key = '0cdb7d176a9b4fc78fd2ae89d43d6aee'
@@ -46,6 +47,30 @@ export const getPlatform = () => {
         try {
             const response = await axios.get(`${baseUrl}platforms/lists/parents?key=${key}`)
             dispatch(setPlatforms(response.data))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export const getCurrentGame = (id) => {
+    return async (dispatch) => {
+        try {
+            const gameResponse = await axios.get(`${baseUrl}games/${id}?key=${key}`)
+            const screenShotResponse = await axios.get(`${baseUrl}games/${id}/screenshots?key=${key}`)
+            dispatch(setCurrentGame(gameResponse.data))
+            dispatch(setScreenShots(screenShotResponse.data))
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export const getScreenShots = (id) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get(`${baseUrl}games/${id}/screenshots?key=${key}`)
+            dispatch(setScreenShots(response.data))
         } catch (e) {
             console.log(e)
         }
